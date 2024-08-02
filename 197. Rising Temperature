@@ -1,0 +1,5 @@
+# Write your MySQL query statement below
+select id 
+From (select id,temperature,recordDate, LAG(temperature) over(order by recordDate) AS pre_temperature
+from Weather )AS subquery
+where temperature > pre_temperature;
